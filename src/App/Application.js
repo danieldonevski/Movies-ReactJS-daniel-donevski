@@ -3,13 +3,13 @@ import { Switch, Route } from "react-router-dom";
 import Routing from "./Routing";
 import { BrowserRouter } from "react-router-dom";
 import { Header } from "../Components/Header";
-import NotesMockAPI from "../API/NotesMockAPI";
+import MoviesMockAPI from "../API/MoviesMockAPI";
 import UsersMockAPI from "../API/UsersMockAPI";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 const styles = {
-  fontFamily: "sans-serif",
-  textAlign: "center"
+  backgroundColor: "#eeeeee"
 };
 
 export default class Application extends Component {
@@ -19,7 +19,7 @@ export default class Application extends Component {
 
   render() {
     //UsersMockAPI.seedAdmin();
-    NotesMockAPI.seed();
+    MoviesMockAPI.seed();
 
     let isAuthenticated = UsersMockAPI.isAuthenticated();
 

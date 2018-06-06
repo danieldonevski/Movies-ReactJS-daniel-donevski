@@ -44,7 +44,15 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div
+        className="col-md-12"
+        style={{
+          maxWidth: "350px",
+          margin: "auto",
+          paddingTop: "25px",
+          paddingBottom: "25px"
+        }}
+      >
         <form onSubmit={this.onSubmit.bind(this)}>
           <div className="form-group">
             <label>Username</label>
@@ -67,11 +75,11 @@ export default class Login extends Component {
             {this.state.hasError ? (
               <p className="text-danger">{this.state.errorText}</p>
             ) : (
-                ""
-              )}
+              ""
+            )}
           </div>
 
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-default">
             Login
           </button>
         </form>

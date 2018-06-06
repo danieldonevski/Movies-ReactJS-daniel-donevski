@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import User from "../Pages/User";
-import NotesMockAPI from "../API/NotesMockAPI";
+import MoviesMockAPI from "../API/MoviesMockAPI";
 import UsersMockAPI from "../API/UsersMockAPI";
 
 const styles = {

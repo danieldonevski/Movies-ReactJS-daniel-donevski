@@ -1,0 +1,27 @@
+.movie-holder {
+  display: inline-block;
+  margin: 10px;
+  background-color: #c3c3c3;
+}
+
+.movie-creation-date {
+  word-wrap: break-word;
+}
+
+.key {
+  font-weight: bold;
+}
+
+.delete-icon {
+  position: relative;
+  top: 10;
+  left: 50px;
+  cursor: pointer;
+}
+
+.edit-icon {
+  position: relative;
+  top: 10;
+  left: -50px;
+  cursor: pointer;
+}

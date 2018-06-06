@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import NoteModel from "../API/NoteModel";
-import NotesMockAPI from "../API/NotesMockAPI";
+import MovieModel from "../API/MovieModel";
+import MoviesMockAPI from "../API/MoviesMockAPI";
 import UsersMockAPI from "../API/UsersMockAPI";
 
-export default class AddNote extends Component {
+export default class AddMovie extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      note: new NoteModel("", "", null, UsersMockAPI.getLoggedUserID()),
+      movie: new MovieModel("", "", null, UsersMockAPI.getLoggedUserID()),
       ready: true
     };
   }
@@ -21,45 +21,52 @@ export default class AddNote extends Component {
         ready: false
       });
 
-      NotesMockAPI.getById(id).then(dbNote => {
+      MoviesMockAPI.getById(id).then(dbMovie => {
         this.setState({
-          note: dbNote,
+          movie: dbMovie,
           ready: true
         });
       });
     }
   }
 
+  onCheckboxChange(event) {
+    event.persist();
+    this.setState({
+      movie: { ...this.state.movie, [event.target.name]: event.target.checked }
+    });
+  }
+
   onPropChange(event) {
     event.persist();
     this.setState({
-      note: { ...this.state.note, [event.target.name]: event.target.value }
+      movie: { ...this.state.movie, [event.target.name]: event.target.value }
     });
   }
 
   onSave(event) {
     event.preventDefault();
     if (
-      this.state.note.title === "" ||
-      this.state.note.description === "" ||
-      (this.state.note.status != "0" && this.state.note.status != "1")
+      this.state.movie.title === "" ||
+      this.state.movie.description === "" ||
+      (this.state.movie.status != "0" && this.state.movie.status != "1")
     ) {
       return;
     }
-    if (this.state.note.status == 1) {
-      this.state.note.dateFinished = new Date().toString();
+    if (this.state.movie.status == 1) {
+      this.state.movie.dateFinished = new Date().toString();
     } else {
-      this.state.note.dateFinished = null;
+      this.state.movie.dateFinished = null;
     }
     this.setState({
       ready: false
     });
-    NotesMockAPI.save(this.state.note).then(() => {
+    MoviesMockAPI.save(this.state.movie).then(() => {
       this.setState({
         ready: true
       });
 
-      this.props.history.push("/notes-list");
+      this.props.history.push("/movies-list");
     });
   }
 
@@ -78,14 +85,22 @@ export default class AddNote extends Component {
     }
 
     return (
-      <div>
+      <div
+        className="col-md-12"
+        style={{
+          maxWidth: "350px",
+          margin: "auto",
+          paddingTop: "25px",
+          paddingBottom: "25px"
+        }}
+      >
         <form onSubmit={this.onSave.bind(this)}>
           <div className="form-group">
             <label>Title: </label>
             <input
               className="form-control"
               name="title"
-              value={this.state.note.title}
+              value={this.state.movie.title}
               onChange={this.onPropChange.bind(this)}
             />
           </div>
@@ -94,24 +109,23 @@ export default class AddNote extends Component {
             <input
               className="form-control"
               name="description"
-              value={this.state.note.description}
+              value={this.state.movie.description}
               onChange={this.onPropChange.bind(this)}
             />
           </div>
           <div className="form-group">
             <label>Status: </label>
             <input
-              type="number"
-              min="0"
-              max="1"
+              type="checkbox"
               className="form-control"
               name="status"
-              value={this.state.note.status}
-              onChange={this.onPropChange.bind(this)}
-              placeholder="0 or 1"
+              onChange={this.onCheckboxChange.bind(this)}
+              defaultChecked={this.state.checked}
             />
           </div>
-          <button type="submit">Save</button>
+          <button type="submit" className="btn btn-default">
+            Save
+          </button>
         </form>
       </div>
     );

@@ -6,24 +6,46 @@ import UsersMockAPI from "../API/UsersMockAPI";
 export const Header = props => {
   let template = props.isAuthenticated ? (
     props.isAdmin ? (
-      <nav>
-        <Link to="/notes-list"> Notes </Link>
-        <Link to="/add-note">Add note </Link>
-        <Link to="/add-user"> Add User </Link>
-        <Link to="/users-list"> Users </Link>
-        <Link to="/login" onClick={props.eventLogout}>
-          {" "}
-          Logout{" "}
-        </Link>
+      <nav className="navbar navbar-default">
+        <ul className="nav navbar-nav header">
+          <li>
+            <Link to="/movies-list"> Movies </Link>
+          </li>
+          <li>
+            <Link to="/add-movie">Add movie </Link>
+          </li>
+          <li>
+            <Link to="/add-user"> Add User </Link>
+          </li>
+          <li>
+            <Link to="/users-list"> Users </Link>
+          </li>
+          <li>
+            <Link to="/login" onClick={props.eventLogout}>
+              {" "}
+              Logout{" "}
+            </Link>
+          </li>
+        </ul>
       </nav>
     ) : (
-      <nav>
-        <Link to="/notes-list"> Notes </Link>
-        <Link to="/add-note">Add note </Link>
-        <Link to="/login" onClick={props.eventLogout}>
-          {" "}
-          Logout{" "}
-        </Link>
+      <nav className="navbar navbar-default">
+        <div className="container-fluid">
+          <ul className="nav navbar-nav">
+            <li>
+              <Link to="/movies-list"> Movies </Link>
+            </li>
+            <li>
+              <Link to="/add-movie">Add movie </Link>
+            </li>
+            <li>
+              <Link to="/login" onClick={props.eventLogout}>
+                {" "}
+                Logout{" "}
+              </Link>
+            </li>
+          </ul>
+        </div>
       </nav>
     )
   ) : (
@@ -55,8 +77,8 @@ export const Header = props => {
 //       navbar = (
 //         <nav>
 //           <Link to="/home"> Home </Link>
-//           <Link to="/notes-list"> Notes </Link>
-//           <Link to="/add-note">Add note </Link>
+//           <Link to="/movies-list"> Movies </Link>
+//           <Link to="/add-movie">Add movie </Link>
 //           <Link to="/register"> Add User </Link>
 //           <Link to="/users-list"> Users </Link>
 //           <Link to="/logout"> Logout </Link>

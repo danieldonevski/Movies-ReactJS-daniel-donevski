@@ -41,7 +41,15 @@ export default class Register extends Component {
 
   render() {
     return (
-      <div>
+      <div
+        className="col-md-12"
+        style={{
+          maxWidth: "350px",
+          margin: "auto",
+          paddingTop: "25px",
+          paddingBottom: "25px"
+        }}
+      >
         <form onSubmit={this.onSubmit.bind(this)}>
           <div className="form-group">
             <label>Username</label>
@@ -68,7 +76,7 @@ export default class Register extends Component {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-default">
             Register
           </button>
         </form>

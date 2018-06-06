@@ -1,5 +1,5 @@
 import UserModel from "./UserModel";
-import NotesMockAPI from "./NotesMockAPI";
+import MoviesMockAPI from "./MoviesMockAPI";
 
 export default class UsersMockAPI {
   static isAuthenticated() {
@@ -141,7 +141,7 @@ export default class UsersMockAPI {
         let jsonUsers = JSON.stringify(users);
         localStorage.setItem("users", jsonUsers);
 
-        NotesMockAPI.deleteByAuthorId(id);
+        MoviesMockAPI.deleteByAuthorId(id);
         resolve();
       });
     });

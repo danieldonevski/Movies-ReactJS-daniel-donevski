@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import UserModel from "../API/UserModel";
-import NotesMockAPI from "../API/NotesMockAPI";
+import MoviesMockAPI from "../API/MoviesMockAPI";
 import UsersMockAPI from "../API/UsersMockAPI";
 
 export default class AddUser extends Component {
@@ -74,7 +74,15 @@ export default class AddUser extends Component {
     }
 
     return (
-      <div>
+      <div
+        className="col-md-12"
+        style={{
+          maxWidth: "350px",
+          margin: "auto",
+          paddingTop: "25px",
+          paddingBottom: "25px"
+        }}
+      >
         <form onSubmit={this.onSave.bind(this)}>
           <div className="form-group">
             <label>Username: </label>
@@ -103,7 +111,9 @@ export default class AddUser extends Component {
               onChange={this.onPropChange.bind(this)}
             />
           </div>
-          <button type="submit">Save</button>
+          <button type="submit" className="btn btn-default">
+            Save
+          </button>
         </form>
       </div>
     );

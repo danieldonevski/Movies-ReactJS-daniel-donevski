@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Application from "./App/Application";
 import { BrowserRouter } from "react-router-dom";
 import Header from "./Components/Header";
-import NotesMockAPI from "./API/NotesMockAPI";
+import MoviesMockAPI from "./API/MoviesMockAPI";
 import UsersMockAPI from "./API/UsersMockAPI";
 
 
